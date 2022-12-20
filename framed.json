@@ -1,4 +1,4 @@
-[{
+var i = [{
   "title": "The Shawshank Redemption",
   "id": 1
 }, {
@@ -176,7 +176,7 @@
   "title": "No Country For Old Men",
   "id": 58
 }, {
-  "title": "Les Miserables",
+  "title": "Les Mis\xe9rables",
   "id": 59
 }, {
   "title": "Requiem For A Dream",
@@ -844,4 +844,25 @@
 }, {
   "title": "Mean Girls",
   "id": 287
+}, {
+  "title": "Argo",
+  "id": 288
+}, {
+  "title": "The Purge",
+  "id": 289
+}, {
+  "title": "In Bruges",
+  "id": 290
+}, {
+  "title": "Inside Out",
+  "id": 291
+}, {
+  "title": "It's a Wonderful Life",
+  "id": 292
+}, {
+  "title": "Die Hard",
+  "id": 293
+}, {
+  "title": "Elf",
+  "id": 294
 }]
