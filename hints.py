@@ -41,12 +41,12 @@ def print_movie_title(movie: MovieDetails):
   title: str = movie.movie.name
   prompt_title(title)
   
-def get_movie_hints() -> Dict[int, Hint]:
+def get_movie_hints() -> Dict[str, Hint]:
   return {
-    1: print_release_date,
-    2: print_genres,
-    3: print_actors,
-    4: print_characters,
-    5: print_movie_title,
+    "release date": print_release_date,
+    "genres": print_genres,
+    "actors": print_actors,
+    "characters": print_characters,
+    "title": print_movie_title,
   }
 

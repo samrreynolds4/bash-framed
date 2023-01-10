@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 from datetime import datetime, date
+import requests
 from game import play_game
 import json
 import asyncio
@@ -32,10 +33,21 @@ def get_genre(id: str):
   return genres[id]
 
 
+def get_updated_list():
+  resp = requests.get("https://framed.wtf/_next/static/chunks/872-f3ae51f095124c75.js")
+  data = resp.text
+  starting_index = data.find("var i=[")
+  ending_index = starting_index+data[starting_index:].find("]")
+  # print(data[:ending_index])
+  data_part = data[starting_index:ending_index]
+  data_part = data_part[6:] + "]"
+  data_part = data_part.replace("title:", "\"title\":").replace("id:", "\"id\":").replace(r"\x", "")
+  obj = json.loads(data_part)
+  
+  return obj
+
 def get_framed_movies():
-  movies = list()
-  with open("./framed.json") as f:
-    movies = json.loads(f.read())
+  movies = get_updated_list()
   movies_dict = {}
   for m in movies:
     movies_dict[m["id"]] = m["title"]
@@ -62,6 +74,7 @@ def get_todays_framed() -> str:
 
 async def main():
   title: str = get_todays_framed()
+  print(title)
   await play_game(title)
 
 asyncio.run(main())
